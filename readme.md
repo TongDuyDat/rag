@@ -2,7 +2,22 @@
 
 ![Kiến trúc hệ thống RAG](image/rag_pieline.png)
 
-**Các thực inference code**
+**Cách thực inference code**
+Tạo file .env
+```
+# .env
+GOOGLE_API_KEY = ""
+ANTHROPIC_API_KEY = ""
+DEEPSEEK_API_KEY = ""
+RESOURCE_PROJECT_INVALID = ""
+GROQ_API_KEY = ""
+OPENAI_API_KEY = ""
+MISTRAL_API_KEY = ""
+```
+**Thực hiện việc cài đặt qdrant trên local**
+Truy cập trang https://qdrant.tech/documentation/quickstart/ làm theo hướng dẫn
+
+**Chạy chương trình**
 ```
 pip install -r requirements.txt
 streamlit run streamlit_app.py
