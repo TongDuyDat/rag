@@ -1,7 +1,8 @@
 # Standard library imports
 import uuid
 from typing import Any
-
+from dotenv import load_dotenv
+_ = load_dotenv()
 # Vector store imports
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance
@@ -22,7 +23,7 @@ def create_collection(
         vector_size (int): Size of the embedding vector (default 768)
     """
     # Initialize Qdrant client
-    client = QdrantClient(host="localhost", port=6333)
+    client = QdrantClient(host="localhost", port=6333, timeout=10.0)
 
     # try:
     # Check if collection exists
@@ -77,11 +78,25 @@ def search_qdrant(
     query: str,
     vector_store: QdrantVectorStore,
     top_k: int = 5,
+    score_threshold = 0.5
+):
+    """
+    Search for similar documents in Qdrant using a query
+    """
+    retriever = vector_store.as_retriever(search_type = "mmr", search_kwargs={"k": top_k}, )
+    docs = retriever.invoke(query)
+    # docs = vector_store.similarity_search_with_score(query, k=top_k)
+    return docs
+
+async def asearch_qdrant(
+    query: str,
+    vector_store: QdrantVectorStore,
+    top_k: int = 5,
+    score_threshold = 0.5
 ):
     """
     Search for similar documents in Qdrant using a query
     """
     retriever = vector_store.as_retriever(search_type = "mmr", search_kwargs={"k": top_k})
-    docs = retriever.invoke(query)
+    docs = await retriever.ainvoke(query)
     return docs
-

@@ -102,21 +102,16 @@ samples = """
 """
 
 chitchat_prompt = """
-Given a question, determine if it's a typical conversation (chitchat) or a technical/academic question.
-Questions about:
-- Personal life, daily activities, preferences, hobbies
-- Weather, food, entertainment, social activities
-- Casual greetings and small talk
-are considered chitchat (true).
+You are an AI assistant that classifies and responds to user queries.
+1. If the query is small talk (chitchat) such as greetings, casual conversations, respond directly to the query in a friendly and engaging manner.  
+2. If the query is task-oriented or requires specific processing, classify it accordingly without responding directly.
+Sample:
+"Hey! How’s your day going?" → true
+"Did you have lunch already?" → true
+"What are the latest trends in AI?" → false
+"Got any plans for the weekend?" → true
+"Can you explain convolutional neural networks?" → false
 
-Questions about:
-- Technical concepts, algorithms, research
-- Data science, machine learning, AI
-- Implementation details, experiments, methodologies
-are not chitchat (false).
-
-Examples of chitchat:
-{samples}
-**RULES**
-- Only return true or false
-""".format(samples = samples)
+**User Query:** "{input_query}" 
+**History chat:** "{history_chat}"
+"""

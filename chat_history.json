@@ -1,0 +1,136 @@
+{
+    "session_1": [
+        {
+            "HumanChat": "Hello, Tôi tên là Tống Duy Đạt",
+            "AIChat": "Rất vui khi gặp bạn"
+        },
+        {
+            "HumanChat": "Bạn tên gì?",
+            "AIChat": "Tôi là trợ lý AI của bạn"
+        },
+        {
+            "HumanChat": "Bạn có thể giúp tôi không?",
+            "AIChat": "Tất nhiên, tôi có thể giúp bạn với nhiều thông tin hữu ích."
+        },
+        {
+            "HumanChat": "Hôm nay thời tiết thế nào?",
+            "AIChat": "Hãy để tôi kiểm tra thời tiết hôm nay cho bạn."
+        },
+        {
+            "HumanChat": "Tôi tên là gì",
+            "AIChat": "Tên của bạn là Tống Duy Đạt"
+        }
+    ],
+    "session_2": [
+        {
+            "HumanChat": "Chào buổi sáng",
+            "AIChat": "Chào bạn, chúc một ngày tốt lành!"
+        },
+        {
+            "HumanChat": "Bạn có thể kể một câu chuyện không?",
+            "AIChat": "Tất nhiên! Bạn muốn nghe một câu chuyện cổ tích hay một câu chuyện hài hước?"
+        },
+        {
+            "HumanChat": "Hãy kể một câu chuyện hài hước",
+            "AIChat": "Một con gà đi vào quán cà phê và hỏi: 'Bạn có trà không?' Người chủ quán đáp: 'Không, chúng tôi chỉ có cà phê.' Ngày hôm sau, con gà quay lại và hỏi lại. Cuối cùng, người chủ quán nói: 'Nếu bạn hỏi nữa, tôi sẽ đóng đinh mỏ bạn vào quầy!' Hôm sau, con gà lại đến và hỏi: 'Bạn có đinh không?' Người chủ quán nói: 'Không.' Con gà cười và nói: 'Vậy bạn có trà không?'"
+        }
+    ],
+    "session_3": [
+        {
+            "HumanChat": "Tôi đang nghiên cứu về trí tuệ nhân tạo, bạn có thể giúp tôi không?",
+            "AIChat": "Chắc chắn! Bạn đang quan tâm đến khía cạnh nào của trí tuệ nhân tạo?"
+        },
+        {
+            "HumanChat": "Tôi muốn hiểu về học sâu (deep learning).",
+            "AIChat": "Học sâu là một nhánh của học máy, sử dụng mạng nơ-ron nhân tạo với nhiều lớp để xử lý dữ liệu phức tạp."
+        },
+        {
+            "HumanChat": "Bạn có thể giải thích về mạng nơ-ron nhân tạo không?",
+            "AIChat": "Mạng nơ-ron nhân tạo mô phỏng cách hoạt động của não người, bao gồm các lớp đầu vào, ẩn và đầu ra để xử lý và dự đoán dữ liệu."
+        },
+        {
+            "HumanChat": "Có những ứng dụng nào của học sâu?",
+            "AIChat": "Học sâu có rất nhiều ứng dụng, từ nhận dạng hình ảnh, xử lý ngôn ngữ tự nhiên, xe tự lái cho đến chẩn đoán y tế."
+        },
+        {
+            "HumanChat": "xử lý ảnh là gì ",
+            "AIChat": "Xử lý ảnh là một lĩnh vực trong trí tuệ nhân tạo, liên quan đến việc sử dụng các thuật toán và công nghệ để phân tích, xử lý và hiểu các hình ảnh. Trong lĩnh vực này, các hệ thống máy tính được thiết kế để thực hiện các nhiệm vụ như nhận dạng đối tượng, phân loại hình ảnh, phát hiện cạnh, phân đoạn hình ảnh và nhiều hơn nữa.\nsource: "
+        },
+        {
+            "HumanChat": "xử lý ảnh là gì ",
+            "AIChat": "Xử lý ảnh là quá trình chỉnh sửa, chuyển đổi hoặc cải thiện hình ảnh bằng cách sử dụng các công cụ và kỹ thuật khác nhau. Tuy nhiên, trong văn bản trên không có định nghĩa hoặc giải thích cụ thể về xử lý ảnh. Văn bản chủ yếu đề cập đến các vấn đề liên quan đến thuế GTGT, xuất khẩu tại chỗ, và các quy định về kinh doanh.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 15"
+        }
+    ],
+    "2025-02-13 17:11:05.064475": [
+        {
+            "HumanChat": "chú thích ảnh là gì ",
+            "AIChat": "Xin lỗi, Tôi không thể trả lời câu hỏi của bạn.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: Không có thông tin"
+        },
+        {
+            "HumanChat": "thuế giá trị gia tăng là gì ",
+            "AIChat": "Thuế giá trị gia tăng (GTGT) là loại thuế tiêu thụ tính trên giá trị tăng thêm của hàng hóa, dịch vụ phát sinh trong quá trình sản xuất, lưu thông đến tiêu dùng. Theo phương pháp tính trực tiếp trên giá trị gia tăng, số thuế GTGT phải nộp bằng giá trị gia tăng nhân với thuế suất thuế giá trị gia tăng áp dụng.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 30"
+        },
+        {
+            "HumanChat": "Hard attention ",
+            "AIChat": "Hard attention là một cơ chế chú ý trong đó thay vì tính trung bình trọng số của tất cả các vector trạng thái ẩn, nó sử dụng điểm attention để lựa chọn vị trí của vector trạng thái ẩn thích hợp nhất. Hard attention thường được huấn luyện bằng cách sử dụng phương pháp học tăng cường (Reinforcement Learning) và có ưu điểm là chi phí tính toán thấp hơn. Tuy nhiên, cần nhiều kỹ thuật phức tạp để huấn luyện.\nsource: D:/NCKH/LLM/Langchain/upload_file\\ImageCaption_v1.pdf page: 10"
+        },
+        {
+            "HumanChat": "Image captinoning là gì ",
+            "AIChat": "Image captioning là một vấn đề nghiên cứu quan trọng và phức tạp trong lĩnh vực trí tuệ nhân tạo, đặc biệt là trong giao thoa giữa thị giác máy tính và xử lý ngôn ngữ tự nhiên. Nó liên quan đến việc tạo ra các câu mô tả để mô tả một bức ảnh mà không có sự can thiệp của con người. Mục tiêu của image captioning là nhận một bức ảnh và tạo ra một câu mô tả nội dung có trong bức ảnh.\nsource: D:/NCKH/LLM/Langchain/upload_file\\ImageCaption_v1.pdf page: 5"
+        },
+        {
+            "HumanChat": "GCN là gì ",
+            "AIChat": "Xin lỗi, Tôi không thể trả lời câu hỏi của bạn.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 8"
+        },
+        {
+            "HumanChat": "mô hình GCN là gì ",
+            "AIChat": "Mô hình GCN (Graph Convolutional Network) là một loại mạng nơ-ron đồ thị được sử dụng để mã hóa đồ thị thể hiện mối tương quan ngữ cảnh và không gian giữa các đặc trưng trong ảnh thành một vector đặc trưng. Vector đặc trưng này chứa thông tin ngữ nghĩa và không gian đã được trích xuất từ ảnh.\nsource: D:/NCKH/LLM/Langchain/upload_file\\ImageCaption_v1.pdf page: 21"
+        },
+        {
+            "HumanChat": "Một số nghiên cứu nổi bật dựa trên đồ thị. ",
+            "AIChat": "Một số nghiên cứu nổi bật dựa trên đồ thị bao gồm việc xây dựng đồ thị thể hiện mối tương quan ngữ cảnh và không gian giữa các đặc trưng trong ảnh. Các đặc trưng của ảnh được thể hiện là các đỉnh trong đồ thị, các cạnh của đồ thị thể hiện mối tương quan giữa các đặc trưng.\nsource: D:/NCKH/LLM/Langchain/upload_file\\ImageCaption_v1.pdf page: 20"
+        },
+        {
+            "HumanChat": "Thông tư số 119/2014/TT-BTC ngày 25 tháng 8 năm 2014 của Bộ Tài chính sửa đổi",
+            "AIChat": "Thông tư số 119/2014/TT-BTC ngày 25 tháng 8 năm 2014 của Bộ Tài chính sửa đổi, bổ sung một số điều của Thông tư số 78/2014/TT-BTC ngày 18/6/2014 và Thông tư số 119/2014/TT-BTC ngày 25/8/2014.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 45"
+        }
+    ],
+    "2025-02-13 17:30:56.931883": [
+        {
+            "HumanChat": "chú thích ảnh là gì ",
+            "AIChat": "Chú thích ảnh (Image captioning) là một vấn đề nghiên cứu quan trọng và nhiều phức tạp thu hút nhiều nhà nghiên cứu và có những ứng dụng mạnh mẽ trong nhiều lĩnh vực trong thực tiễn như giao tiếp giữa người và máy, phân tích dữ liệu phương tiện giao thông trong đô thị, giám sát chất lượng sản phẩm trong công nghiệp, chuẩn đoán và kiến nghị chuẩn đoán bệnh trong y tế, đặc biệt ứng dụng trong hỗ trợ người khiếm thị.\nsource: D:/NCKH/LLM/Langchain/upload_file\\ImageCaption_v1.pdf page: 5"
+        },
+        {
+            "HumanChat": "Đối tượng chịu thuế giá trị gia tăng ",
+            "AIChat": "Đối tượng chịu thuế giá trị gia tăng là các tổ chức, cá nhân có hoạt động sản xuất, kinh doanh hàng hóa, dịch vụ chịu thuế GTGT. Các trường hợp không phải chịu thuế GTGT bao gồm: tổ chức, cá nhân không kinh doanh; hàng hóa, dịch vụ không thuộc đối tượng chịu thuế GTGT; hàng hóa, dịch vụ thuộc đối tượng không chịu thuế GTGT. Các dịch vụ cung ứng tại Việt Nam cho tổ chức, cá nhân ở nước ngoài không được áp dụng thuế suất 0% bao gồm: thi đấu thể thao, biểu diễn nghệ thuật, văn hóa, giải trí, hội nghị, khách sạn, đào tạo, quảng cáo, du lịch lữ hành; dịch vụ thanh toán qua mạng; dịch vụ cung cấp gắn với việc bán, phân phối, tiêu thụ sản phẩm, hàng hóa tại Việt Nam.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 15"
+        },
+        {
+            "HumanChat": "ai phải nộp thuế giá trị gia tăng ",
+            "AIChat": "Người nộp thuế giá trị gia tăng là tổ chức, cá nhân sản xuất, kinh doanh hàng hóa, dịch vụ chịu thuế giá trị gia tăng.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 41"
+        },
+        {
+            "HumanChat": "dịch vụ chịu thuế giá trị gia tăng",
+            "AIChat": "Dịch vụ chịu thuế giá trị gia tăng bao gồm các hoạt động như mua, bán, chế tác vàng bạc, đá quý; gia công hàng hóa; xây dựng, lắp đặt; và các dịch vụ khác theo quy định của pháp luật.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 30"
+        },
+        {
+            "HumanChat": "Nêu rõ các dịch vụ phải chịu thuế giá trị gia tăng",
+            "AIChat": "Các dịch vụ phải chịu thuế giá trị gia tăng bao gồm: thi đấu thể thao, biểu diễn nghệ thuật, văn hóa, giải trí, hội nghị, khách sạn, đào tạo, quảng cáo, du lịch lữ hành; dịch vụ thanh toán qua mạng; dịch vụ cung cấp gắn với việc bán, phân phối, tiêu thụ sản phẩm, hàng hóa tại Việt Nam.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 24"
+        },
+        {
+            "HumanChat": "đối tượng nào thì được hưởng thuế 0%",
+            "AIChat": "Các đối tượng được hưởng thuế giá trị gia tăng 0% bao gồm: dịch vụ của ngành hàng không, hàng hải cung cấp trực tiếp cho tổ chức ở nước ngoài hoặc thông qua đại lý; hoạt động xây dựng, lắp đặt công trình ở nước ngoài hoặc ở trong khu phi thuế quan; hàng hóa, dịch vụ thuộc đối tượng không chịu thuế GTGT khi xuất khẩu, trừ các trường hợp không áp dụng mức thuế suất 0%; dịch vụ sửa chữa tàu bay, tàu biển cung cấp cho tổ chức, cá nhân nước ngoài.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 23"
+        },
+        {
+            "HumanChat": "khi nào thì áp thuế 0% đối với ngày hàng không",
+            "AIChat": "Thuế 0% đối với dịch vụ hàng không được áp dụng khi dịch vụ được cung cấp trực tiếp cho tổ chức ở nước ngoài hoặc thông qua đại lý, bao gồm: Dịch vụ cung cấp suất ăn hàng không; dịch vụ cất hạ cánh tàu bay; dịch vụ sân đậu tàu bay; dịch vụ an ninh bảo vệ tàu bay; soi chiếu an ninh hành khách, hành lý và hàng hóa; dịch vụ băng chuyền hành lý tại nhà ga; dịch vụ phục vụ kỹ thuật thương mại mặt đất; dịch vụ bảo vệ tàu bay; dịch vụ kéo đẩy tàu bay; dịch vụ dẫn tàu bay; dịch vụ thuê cầu dẫn khách lên, xuống máy bay; dịch vụ điều hành bay đi, đến; dịch vụ vận chuyển tổ lái, tiếp viên và hành khách trong khu vực sân đậu tàu bay; chất xếp, kiểm đếm hàng hóa; dịch vụ phục vụ hành khách đi chuyến bay quốc tế từ cảng hàng không Việt Nam (passenger service charges).\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 23"
+        },
+        {
+            "HumanChat": "Các trường hợp không áp dụng mức thuế suất 0%",
+            "AIChat": "Các trường hợp không áp dụng mức thuế suất 0% được hướng dẫn tại khoản 3 Điều này\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 23"
+        },
+        {
+            "HumanChat": "chi tiết hơn",
+            "AIChat": "Để biết chi tiết hơn về các trường hợp không áp dụng mức thuế suất 0%, bạn cần tham khảo khoản 3 Điều này.\nsource: D:/NCKH/LLM/Langchain/upload_file\\01_VBHN-BTC_thong tu GTGT.pdf page: 23"
+        }
+    ]
+}
