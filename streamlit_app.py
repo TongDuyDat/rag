@@ -17,8 +17,7 @@ from utils.read_docs import process_file
 # Load environment variables
 load_dotenv()
 
-chatbot = create_chatbot()
-
+chatbot, embeddings = create_chatbot()
 
 # Function to generate response from the model
 def generate_response(prompt):
@@ -85,7 +84,7 @@ def main():
         )
         if uploaded_file is not None:
             if st.button("Submit"):
-                process_file(uploaded_file, st)
+                process_file(uploaded_file, st, embeddings)
             
         # st.session_state.session_id = session_id
     # Main chat interface
@@ -105,21 +104,22 @@ def main():
             with st.chat_message("assistant"):
                 # Tìm đường dẫn file PDF trong phản hồi
                 match = re.search(r"source:\s*(.*?\.pdf)", message.content)
-
                 # Loại bỏ đường dẫn khỏi nội dung để tránh trùng lặp
                 content_cleaned = re.sub(r"source:\s*(.*?\.pdf)", "", message.content).strip() if match else message.content
-                
                 # Hiển thị nội dung tin nhắn của AI
                 st.markdown(
                     f'<div class="assistant-message"> {content_cleaned}</div>',
                     unsafe_allow_html=True,
                 )
-
+                pattern = r"source:\s*(.+?)\s*page:\s*(\d+)"
+                matches = re.findall(pattern, message.content)
                 # Nếu có file PDF, hiển thị link tải
-                if match:
-                    file_path = match.group(1)
+                # txt_source = ""
+                for match in matches:
+                    file_path = match[0]
                     file_url = Path(file_path).as_uri()
-                    st.markdown(f"📄 **Nguồn:** [Mở file tại đây]({file_url})")
+                    txt_source = f"[file]({file_url})"
+                    st.markdown(f"📄 **Page: {match[1]}** {txt_source}")
     # User input for chat
     user_input = st.chat_input("Type your message here...")
     model_response = ""
@@ -134,28 +134,35 @@ def main():
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 model_response = chatbot.get_answer(user_input)
-                
                 # Tìm đường dẫn file PDF trong phản hồi
                 match = re.search(r"source:\s*(.*?\.pdf)", model_response)
-                
                 # Loại bỏ đường dẫn khỏi nội dung gốc để tránh trùng lặp
                 if match:
                     file_path = match.group(1)
+
                     model_response = re.sub(r"source:\s*(.*?\.pdf)", "", model_response).strip()
                     file_url = Path(file_path).as_uri()
                 # Hiển thị nội dung phản hồi
                 st.markdown(model_response)
-
                 # Nếu tìm thấy file, hiển thị link tải
-                if match:
-                    st.markdown(f"📄 **Nguồn:** [Mở file tại đây]({file_url})")
+                pattern = r"source:\s*(.+?)\s*page:\s*(\d+)"
+                matches = re.findall(pattern, model_response)
+                # Nếu có file PDF, hiển thị link tải
+                # txt_source = ""
+                for match in matches:
+                    try:
+                        file_path = match[0]
+                        file_url = Path(file_path).as_uri()
+                        txt_source = f"[file]({file_url})"
+                        st.markdown(f"📄 **Page: {match[1]}** {txt_source}")
+                    except:
+                        continue
+                    
         st.session_state.chat_history.append(model_response)
         chatbot.save_on_disk()
         # Save chat history to JSON file
         # save_chat_history_to_json_file(
         #     chat_history_file, session_id, st.session_state.chat_history
         # )
-
-
 if __name__ == "__main__":
     main()

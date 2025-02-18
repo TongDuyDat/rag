@@ -6,7 +6,6 @@ from langchain_openai import OpenAIEmbeddings
 _ = load_dotenv()
 
 # load data from pdf
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_experimental.text_splitter import SemanticChunker
 from vector_database.index_qdrant import add_to_qdrant
@@ -17,28 +16,19 @@ from langchain_community.document_loaders import (
     PyPDFLoader,
     UnstructuredWordDocumentLoader,
 )
+MARKDOWN_SEPARATORS = [
+        "\n#{1,6} ",
+        "```\n",
+        "\n\\*\\*\\*+\n",
+        "\n---+\n",
+        "\n___+\n",
+        "\n\n",
+        "\n",
+        " ",
+        "",
+    ]
 
-# embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-
-# loader = PyPDFLoaderCustom(
-#     "2101.03961v3.pdf",
-#     extract_images=True,
-# )
-# documents = loader.load()
-# print(documents)
-# text_splitter = SemanticChunker(embeddings, min_chunk_size = 100)
-# # text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-# #         chunk_size=1000,
-# #         chunk_overlap=200,
-# #         model_name="gpt-3.5"
-# #     )
-# texts = text_splitter.split_documents(documents)
-# print(texts)
-# add_to_qdrant(texts, "langchain", embedding_model=embeddings)
-
-
-def process_file(uploaded_file, st):
-    embeddings  = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+def process_file(uploaded_file, st, embeddings):
     temp_dir = "D:/NCKH/LLM/Langchain/upload_file"
     os.makedirs(temp_dir, exist_ok=True)
     temp_path = os.path.join(temp_dir, uploaded_file.name)
@@ -59,14 +49,13 @@ def process_file(uploaded_file, st):
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
         # Set a really small chunk size, just to show.
-        chunk_size=1000,
-        chunk_overlap=100,
+        chunk_size=500,
+        chunk_overlap=50,
         length_function=len,
         # is_separator_regex=False,
         separators=[
             "\n\n",
             "\n",
-            " ",
             ".",
             ",",
             "\u200b",  # Zero-width space
@@ -78,6 +67,11 @@ def process_file(uploaded_file, st):
         ],
         # Existing args
     )
+    # text_splitter = SemanticChunker(
+    #     embeddings=embeddings,
+    #     breakpoint_threshold_type="gradient",
+    #     min_chunk_size= 200,
+    # )
     texts = text_splitter.split_documents(documents)
     add_to_qdrant(texts, "langchain", embedding_model=embeddings)
     st.success(

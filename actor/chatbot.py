@@ -1,34 +1,26 @@
 import json
+from dotenv import load_dotenv
+from pathlib import Path
 import sys
 
-from langchain_openai import OpenAIEmbeddings
-
-
+from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 sys.path.append("./")
-from dotenv import load_dotenv
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+_ = load_dotenv()
 
+from langchain_core.messages import HumanMessage, AIMessage
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from router.chitchatDetector import ChitChatDetector
 from router.reflection import ReflectionRouter
 from router.semantic_router import TranslationRouter
 from utils.chat_history import load_chat_history_from_json
 
-_ = load_dotenv()
-from typing import List
-from pydantic import BaseModel, Field
-from langchain_core.language_models.chat_models import BaseChatModel
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.documents import Document
-from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-
 from prompts import *
 from actor.rag_chatbot import Retrieval_LLM
+
 from vector_database.index_qdrant import (
     create_collection,
-    search_qdrant,
-    asearch_qdrant,
 )
-from langchain_groq import ChatGroq
 
 
 class ChatBot:
@@ -46,14 +38,29 @@ class ChatBot:
 
     def get_answer(self, query):
         chitchat_response = self.chitchat_llm.invoke(query, self.chat_history)
+        print('*'*100)
+        print(chitchat_response)
+        print('*'*100)
         if chitchat_response.is_chitchat:
-            self.save_chat_cache(query, chitchat_response.context)
             print(chitchat_response)
+            self.save_chat_cache(query, chitchat_response.context)
             return chitchat_response.context
-        response = self.retrieval_llm.invoke(query, self.chat_history)
-        output = f'{response.page_content}\n{"source: " + response.metadata.get("source", "") if "source" in response.metadata else ""} {"page: "+str(response.metadata["page"]) if "page" in response.metadata else ""}'
-        self.save_chat_cache(query, output)
-        return output
+        # if isinstance(chitchat_response.context, str):
+        #     print(chitchat_response)
+        #     self.save_chat_cache(query, chitchat_response.context)
+        #     return chitchat_response.context
+        response = self.retrieval_llm.invoke(query, chitchat_response.context)
+        output = f"{response.page_content} "
+        metadata = ", ".join(
+            [
+                f"source: {Path(r.source)} page: {r.page}"
+                for r in response.metadata
+            ]
+        )
+
+        metadata = metadata.replace("\\\\", "\\")
+        self.save_chat_cache(query, output + metadata)
+        return output + metadata
 
     def save_chat_cache(self, input, output):
         # Save chat history to database
@@ -84,44 +91,31 @@ class ChatBot:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-# if __name__ == "__main__":
-
-
-#     llm = ChatGroq(model="llama-3.3-70b-specdec")
-#     llm_final = ChatGroq(model="llama-3.3-70b-versatile")
-#     # final_llm = ChatGroq(model="llama-3.3-70b-vers")
-#     reflection_llm = ReflectionRouter(llm, sys=rewrite_prompt)
-#     translation_llm = TranslationRouter(llm, sys=translation_prompt)
-#     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-#     vector_store = create_collection("langchain", embeddings)
-#     retrieval_chat = Retrieval_LLM(
-#         final_llm=llm_final,
-#         translation_llm=translation_llm,
-#         reflection_llm=reflection_llm,
-#         retrieval=vector_store,
-#         sys_prompt=human_prompt,
-#     )
-#     chitchat_llm = ChitChatDetector(llm, chitchat_prompt)
-#     chatbot = ChatBot(chitchat_llm=chitchat_llm, retrieval_llm=retrieval_chat)
-#     chatbot.start_chat("chat_history.json", "session_3")
-#     print(chatbot.get_answer("MultiHead⁡Attention là gì"))
-#     chatbot.save_on_disk()
-#     # chat_history = load_chat_history_from_json("chat_history.json", "session_1")
 def create_chatbot() -> ChatBot:
-    llm = ChatGroq(model="llama-3.3-70b-specdec", temperature=0)
-    llm_final = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.7)
-    # final_llm = ChatGroq(model="llama-3.3-70b-vers")
+    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.5)
+    llm_final = ChatGroq(model="llama-3.3-70b-specdec", temperature=0)
+    # llm = ChatOpenAI(model="gpt-4o",
+    #             temperature=0.5,
+    #             max_tokens=None,
+    #             timeout=None,
+    #             max_retries=2,
+    #             # api_key="...",
+    #             # base_url="...",
+    #             # organization="...",
+    #             # other params...
+    # )
+    # llm_final = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=1)
     reflection_llm = ReflectionRouter(llm, sys=rewrite_prompt)
     translation_llm = TranslationRouter(llm, sys=translation_prompt)
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
-    vector_store = create_collection("langchain", embeddings)
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large", dimensions=1024)
+    vector_store = create_collection("langchain", embeddings, vector_size=1024)
     retrieval_chat = Retrieval_LLM(
         final_llm=llm_final,
         translation_llm=translation_llm,
         reflection_llm=reflection_llm,
         retrieval=vector_store,
-        sys_prompt=human_prompt,
+        sys_prompt=human_prompt_v1,
     )
-    chitchat_llm = ChitChatDetector(llm, chitchat_prompt)
+    chitchat_llm = ChitChatDetector(llm, re_write_all_prompt)
     chatbot = ChatBot(chitchat_llm=chitchat_llm, retrieval_llm=retrieval_chat)
-    return chatbot
+    return chatbot, embeddings

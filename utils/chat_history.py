@@ -1,5 +1,6 @@
 import json
-from langchain.memory import ConversationBufferMemory
+import re
+from langchain.memory import ConversationBufferMemory, ConversationSummaryBufferMemory, ConversationBufferWindowMemory
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 def load_chat_history_from_json(file_path, session_id):
@@ -9,11 +10,11 @@ def load_chat_history_from_json(file_path, session_id):
     # Lấy lịch sử chat của session cụ thể
     chat_history_cache =  data.get(session_id, [])
     
-    memory = ConversationBufferMemory()
+    memory = ConversationBufferWindowMemory(memory_key="chat_history", return_messages=True)
 
     for chat in chat_history_cache:
         human_msg = HumanMessage(content=chat["HumanChat"])
-        ai_msg = AIMessage(content=chat["AIChat"])
+        ai_msg = AIMessage(content=re.sub(r'source: .*?page: \d+', '', chat["AIChat"]).strip())
 
         # Sử dụng chat_memory.add_message để lưu hội thoại đúng cách
         memory.chat_memory.add_message(human_msg)
